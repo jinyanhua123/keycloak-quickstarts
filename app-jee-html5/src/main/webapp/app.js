@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 var keycloak = new Keycloak();
-var serviceUrl = 'http://127.0.0.1:8080/service'
+var serviceUrl = 'http://127.0.0.1:8080'
 
 function notAuthenticated() {
     document.getElementById('not-authenticated').style.display = 'block';
@@ -41,7 +41,7 @@ function request(endpoint) {
         req.onreadystatechange = function () {
             if (req.readyState == 4) {
                 if (req.status == 200) {
-                    output.innerHTML = 'Message: ' + JSON.parse(req.responseText).message;
+                    output.innerHTML = 'Message: ' + req.responseText;
                 } else if (req.status == 0) {
                     output.innerHTML = '<span class="error">Request failed</span>';
                 } else {
